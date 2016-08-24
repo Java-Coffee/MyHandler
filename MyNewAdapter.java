@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,14 +30,20 @@ public class MyNewAdapter extends BaseAdapter implements AbsListView.OnScrollLis
     private LayoutInflater mInflater;
     private Context context;
     private ImageLoader mImageLoader;
+    public static HashMap<Integer, Boolean> isSelected;
     private int mStart, mEnd;
 
     public MyNewAdapter(Context context, List<ItemBean> List) {
         mList = List;
         mInflater = LayoutInflater.from(context);
         mImageLoader = new ImageLoader();//此方法避免每次创建imageloader时重新创建LruCache
+        init(isSelected);
     }
-
+    public void init(HashMap<Integer, Boolean> isSelected2isSelected) {
+        for (int i = 0; i < mList.size(); i++) {
+            isSelected.put(i, false);
+        }
+    }
     @Override
     public int getCount() {
         return mList.size();

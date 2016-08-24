@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -77,6 +78,7 @@ private ListView listView;
                                 itemBean.ItemImageID = singleJsonObject.getString("albumpic_small");
                                 itemBean.ItemTitle = singleJsonObject.getString("songname");
                                 itemBean.ItemContent = singleJsonObject.getString("singername");
+                                itemBean.MusicUrl = singleJsonObject.getString("url");
                                 Message message = new Message();
                                 message.what = 0x123;
                                 Bundle bundle = new Bundle();
@@ -98,5 +100,11 @@ private ListView listView;
 
         adapter = new MyNewAdapter(this,itemBeanList);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String musicUrl = itemBeanList.get(i).MusicUrl;
+            }
+        });
     }
     }

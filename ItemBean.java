@@ -9,6 +9,7 @@ public class ItemBean implements Serializable{
     public String ItemImageID;
     public String ItemTitle;
     public String ItemContent;
+    public String MusicUrl;
 
 /*    public ItemBean(int itemImageID, String itemTitle, String itemContent) {
         ItemImageID = itemImageID;
